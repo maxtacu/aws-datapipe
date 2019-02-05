@@ -92,9 +92,10 @@ def create_pipeline(pipeline_name, properties_filename, special_id):
 def populate_pipeline(aws_uniqueid, definition_file):
     add_definition_cmd = 'aws datapipeline put-pipeline-definition --pipeline-id ' + aws_uniqueid + ' --pipeline-definition file://' + definition_file
     cmd = subprocess.Popen(add_definition_cmd,  shell=True, stdout=subprocess.PIPE)
-    output, error = cmd.communicate()
+    _, error = cmd.communicate()
     if cmd.returncode == 0:
-        print(bcolors.OKGREEN + "Pipeline has been successfully created and configured" + bcolors.ENDC)
+        print(bcolors.OKGREEN + """Pipeline has been successfully created and configured. 
+            Definition of the pipeline is saved in """ + definition_file + bcolors.ENDC)
     else:
         print(bcolors.FAIL + error + bcolors.ENDC)
     pass
@@ -102,7 +103,7 @@ def populate_pipeline(aws_uniqueid, definition_file):
 def activate_pipeline(aws_uniqueid):
     activate_cmd = 'aws datapipeline activate-pipeline --pipeline-id ' + aws_uniqueid
     cmd = subprocess.Popen(activate_cmd,  shell=True, stdout=subprocess.PIPE)
-    output, error = cmd.communicate()
+    _, error = cmd.communicate()
     if cmd.returncode == 0:
         print(bcolors.OKGREEN + "Pipeline has been successfully activated" + bcolors.ENDC)
     else:

@@ -6,10 +6,6 @@ import os.path
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-def readme():
-    with open('README.rst') as f:
-        return f.read()
-
 def read(*parts):
     return codecs.open(os.path.join(here, *parts), 'r').read()
 
@@ -39,7 +35,6 @@ setup(
         'awsdatapipe': ['data/*.json']
     },
     classifiers=[
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3.6",
         "License :: OSI Approved :: MIT License",
         'Topic :: System :: Systems Administration',
