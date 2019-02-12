@@ -13,6 +13,9 @@ and store the Pipeline Definition as a backup. New features are going to be adde
 
 **This tool supports only Python 3 because Python 2.7 will not be maintained past 2020**
 
+AWS-Datapipe uses awscli to configure pipelines in your AWS account. By default, installing aws-datapipe you will also
+install all the prerequisites, so you can skip this phase and move to the `Installation step`. But in case if you want to do it manually:
+
 The easiest way to install aws-cli is to use `pip <https://pypi.org/project/pip/>`_ in a ``virtualenv``::
 
     $ pip install awscli
